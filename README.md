@@ -11,16 +11,16 @@ This project involves building an end-to-end **ETL Pipeline** for a telecom comp
 
 
 ## 🛠 Tech Stack
-* **ETL Tool:** Informatica PowerCenter
-* **Database:** MySQL / Oracle / SQL Server (Target & Staging)
-* **Data Source:** CSV Files
-* **Reporting:** Excel / Tableau / Power BI (for Dashboarding)
+* ETL Tool: Informatica PowerCenter
+* Database: MySQL / Oracle / SQL Server (Target & Staging)
+* Data Source: CSV Files
+* Reporting: Excel / Tableau / Power BI (for Dashboarding)
 
 ## 📂 Data Architecture
 The pipeline processes three primary source files:
-1.  **CDR_RAW_Telecom.csv:** Contains raw call logs (CallID, Caller, Receiver, Duration, CallType, TowerID, Timestamp).
-2.  **Customer_Master_Telecom.csv:** Contains customer metadata (Phone Number, Name, Plan Type).
-3.  **Tower_Master_Telecom.csv:** Contains infrastructure details (TowerID, Region, City).
+1.  CDR_RAW_Telecom.csv: Contains raw call logs (CallID, Caller, Receiver, Duration, CallType, TowerID, Timestamp).
+2.  Customer_Master_Telecom.csv: Contains customer metadata (Phone Number, Name, Plan Type).
+3.  Tower_Master_Telecom.csv: Contains infrastructure details (TowerID, Region, City).
 
 ## ⚙️ Core ETL Features
 The Informatica workflow implements the following logic:
@@ -29,10 +29,10 @@ The Informatica workflow implements the following logic:
 * Automated loading of daily CSV files from landing zones into staging tables.
 
 ### 2. Transformation (Business Logic)
-* **Data Cleansing:** Removal of duplicate CDR entries and fixing inconsistent date/time formats.
-* **Data Imputation:** Replacing missing call durations with `0`.
-* **Revenue Calculation:** * $\text{Revenue} = \text{Duration} \times 0.02$ (Flat rate per second).
-* **Flagging:**
+* Data Cleansing: Removal of duplicate CDR entries and fixing inconsistent date/time formats.
+* Data Imputation: Replacing missing call durations with `0`.
+* Revenue Calculation: $\text{Revenue} = \text{Duration} \times 0.02$ (Flat rate per second).
+* Flagging:
     * `IsInternational = 1` if `CallType = 'INT'`, otherwise `0`.
 
 ### 3. Loading
@@ -43,15 +43,15 @@ The final processed data is used to generate the following insights:
 
 | Use Case | Key Performance Indicators (KPIs) |
 | :--- | :--- |
-| **Daily Call Volume** | Unique Customers, Avg Calls/Customer, Peak Call Duration. |
-| **Call Type Analysis** | Total Calls/Duration/Revenue by Call Type (Local vs. International). |
-| **International Monitoring** | Int'l Call Count, Int'l Revenue per Call, % of Total Calls. |
-| **Revenue Data** | Revenue per Customer, Top 2 Customers, % Contribution to Total Revenue. |
+| Daily Call Volume | Unique Customers, Avg Calls/Customer, Peak Call Duration. |
+| Call Type Analysis | Total Calls/Duration/Revenue by Call Type (Local vs. International). |
+| International Monitoring | Int'l Call Count, Int'l Revenue per Call, % of Total Calls. |
+| Revenue Data | Revenue per Customer, Top 2 Customers, % Contribution to Total Revenue. |
 
 ## 🌟 Enhanced Features (Stretch Goals)
-* **High Usage Alerts:** Automated system to identify and alert for customers with unusually high call volumes.
-* **Audit Logging:** Capture of load logs (success/failure counts) for pipeline monitoring.
-* **Email Notifications:** Automated email alerts for validation failures or high-usage triggers.
+* High Usage Alerts: Automated system to identify and alert for customers with unusually high call volumes.
+* Audit Logging: Capture of load logs (success/failure counts) for pipeline monitoring.
+* Email Notifications: Automated email alerts for validation failures or high-usage triggers.
 
 ## 📊 Dashboard Preview
 The project includes a Customer Usage Dashboard (Excel/BI) that visualizes call trends, regional tower performance, and revenue distribution.
@@ -66,7 +66,3 @@ The project includes a Customer Usage Dashboard (Excel/BI) that visualizes call 
 ├── docs/               # Detailed mapping documents
 └── README.md           # This file
 ```
-
----
-
-**Would you like me to help you write the SQL DDL scripts to create the tables mentioned in the "Source File Descriptions"?**
